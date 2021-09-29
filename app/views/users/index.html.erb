@@ -1,4 +1,3 @@
-
 <main>
   <p id="notice"></p>
   <div class="container px-5 px-sm-0">
@@ -10,28 +9,25 @@
         <%= render 'books/newfrom', book: @book %>
 
       </div>
-
         <div class="col-md-8 offset-md-1">
           <h2>Books</h2>
           <table class="table table-striped">
             <thead>
               <tr>
+                <th>image</th>
+                <th>name</th>
                 <th></th>
-                <th>Title</th>
-                <th>Opinion</th>
                 <th colspan="3"></th>
               </tr>
             </thead>
             <tbody>
-              <% @books.each do |book| %>
+              <% @users.each do |user| %>
                 <tr>
-                  <td>
-                    <%= link_to user_path(book.user) do %>
-                      <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50,fallback: "no_image.jpg"%>
-                    <% end %>
-                  </td>
-                  <td><%= link_to book.title, book_path(book.id) %></td>
-                  <td><%= book.body %></td>
+                  <!--↓エラー消すといける-->
+                  <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+                  <td><%= user.name %></td>
+                  <td><%= user.introduction %></td>
+                  <td><%= link_to "Show", "/users/#{user.id}" %></td>
                 </tr>
               <% end %>
             </tbody>
